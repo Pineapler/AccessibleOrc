@@ -1,7 +1,7 @@
 ﻿using Pineapler.Utils;
 using UnityEngine;
 
-namespace MY_MOD_NAME.Scripts;
+namespace AccessibleOrc.Scripts;
 
 public class EntryPoint : MonoBehaviour {
     private void Start() {

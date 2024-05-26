@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
-        <AssemblyName>MY_MOD_NAME</AssemblyName>
+        <AssemblyName>AccessibleOrc</AssemblyName>
         <Description>My first mod</Description>
         <Version>1.0.0</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -33,5 +33,10 @@
     
     <ItemGroup>
       <None Include=".run\Run Modded.run.xml" />
+    </ItemGroup>
+   
+    
+    <ItemGroup>
+      <Folder Include="RuntimeDeps\Luts\" />
     </ItemGroup>
 </Project>

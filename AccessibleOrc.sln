@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MY_MOD_NAME", "MY_MOD_NAME.csproj", "{181177C1-31AF-40D3-B25F-D3E2255A63EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessibleOrc", "AccessibleOrc.csproj", "{181177C1-31AF-40D3-B25F-D3E2255A63EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

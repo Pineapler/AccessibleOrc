@@ -1,16 +1,17 @@
 ﻿using Pineapler.Utils;
 using System.Reflection;
+using AccessibleOrc.Scripts;
 using BepInEx;
 using HarmonyLib;
 
-namespace MY_MOD_NAME;
+namespace AccessibleOrc;
 
 [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
 public class Plugin : BaseUnityPlugin {
     // ==========================================================
     // GAME CONFIGURATION
-    public const string PluginGuid = "com.MY_LOWERCASE_USERNAME.MY_LOWERCASE_MOD_NAME";
-    public const string PluginName = "MY_MOD_NAME";
+    public const string PluginGuid = "com.pineapler.accessibleorc";
+    public const string PluginName = "AccessibleOrc";
     public const string PluginVersion = "0.0.1";
     // ==========================================================
 
@@ -22,8 +23,11 @@ public class Plugin : BaseUnityPlugin {
         Log.SetSource(Logger);
         Log.Info($"Plugin {PluginGuid} is starting");
         
-        // TODO: Use a Harmony patch to create an EntryPoint gameObject at the correct time.
-        // See Patches/EntryPointPatch.cs for an example that creates an entry point after GameManager.Start()
+        if (!Luts.Loaded) {
+            Luts.LoadTextures();
+            Luts.CurrentLut = Config.ColorblindType.Value;
+            Config.ColorblindType.SettingChanged += Luts.OnColorblindConfigChanged;
+        }
 
         Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
     }
