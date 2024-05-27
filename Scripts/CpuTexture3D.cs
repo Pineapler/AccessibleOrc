@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace AccessibleOrc.Scripts;
 
@@ -34,15 +35,15 @@ public class CpuTexture3D {
         v *= width;
         w *= width;
 
-        int u_floor = Mathf.FloorToInt(u);
-        int v_floor = Mathf.FloorToInt(v);
-        int w_floor = Mathf.FloorToInt(w);
+        int u_floor = Math.Max(Mathf.FloorToInt(u), 0);
+        int v_floor = Math.Max(Mathf.FloorToInt(v), 0);
+        int w_floor = Math.Max(Mathf.FloorToInt(w), 0);
 
         int idx_floor = FlattenIndex(u_floor, v_floor, w_floor);
         
-        int u_ceil = Mathf.CeilToInt(u);
-        int v_ceil = Mathf.CeilToInt(v);
-        int w_ceil = Mathf.CeilToInt(w);
+        int u_ceil = Math.Min(Mathf.CeilToInt(u), width - 1);
+        int v_ceil = Math.Min(Mathf.CeilToInt(v), width - 1);
+        int w_ceil = Math.Min(Mathf.CeilToInt(w), width - 1);
 
         int idx_ceil = FlattenIndex(u_ceil, v_ceil, w_ceil);
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using BepInEx;
 using BepInEx.Configuration;
 using UnityEngine;
 
@@ -9,7 +8,7 @@ namespace AccessibleOrc.Scripts;
 
 public static class Luts {
     
-    public enum LutType {
+    public enum ColorblindType {
         None,
         Deuteranopia,
         Protanopia,
@@ -23,11 +22,11 @@ public static class Luts {
     private static CpuTexture3D _protanopia;
     private static CpuTexture3D _tritanopia;
 
-    private static LutType _currentLut = LutType.None;
+    private static ColorblindType _currentColorblindType = ColorblindType.None;
     
-    public static LutType CurrentLut {
-        get => _currentLut;
-        set => _currentLut = value;
+    public static ColorblindType CurrentColorblindType {
+        get => _currentColorblindType;
+        set => _currentColorblindType = value;
     }
 
     
@@ -39,13 +38,22 @@ public static class Luts {
         _identity.LoadImage(Path.Combine(deps, "identity.png"));
 
         _deuteranopia = new CpuTexture3D();
-        _deuteranopia.LoadImage(Path.Combine(deps, "deuteranopia.png"));
+        _deuteranopia.LoadImage(Path.Combine(deps, "deuteranopia_dalto.png"));
 
         _protanopia = new CpuTexture3D();
-        _protanopia.LoadImage(Path.Combine(deps, "protanopia.png"));
+        _protanopia.LoadImage(Path.Combine(deps, "protanopia_dalto.png"));
         
         _tritanopia = new CpuTexture3D();
-        _tritanopia.LoadImage(Path.Combine(deps, "tritanopia.png"));
+        _tritanopia.LoadImage(Path.Combine(deps, "tritanopia_dalto.png"));
+        
+        // _deuteranopiaDalto = new CpuTexture3D();
+        // _deuteranopiaDalto.LoadImage(Path.Combine(deps, "deuteranopia_dalto.png"));
+        //
+        // _protanopiaDalto = new CpuTexture3D();
+        // _protanopiaDalto.LoadImage(Path.Combine(deps, "protanopia_dalto.png"));
+        //
+        // _tritanopiaDalto = new CpuTexture3D();
+        // _tritanopiaDalto.LoadImage(Path.Combine(deps, "tritanopia_dalto.png"));
 
         Loaded = true;
     }
@@ -54,23 +62,22 @@ public static class Luts {
 
     public static Color Lookup(Color color) {
         if (!Plugin.Config.ModEnabled.Value) return color;
-        
-        Debug.Log($"{_currentLut}");
-        
-        CpuTexture3D lut = _currentLut switch {
-            LutType.None => _identity,
-            LutType.Deuteranopia => _deuteranopia,
-            LutType.Protanopia => _protanopia,
-            LutType.Tritanopia => _tritanopia,
+
+        CpuTexture3D lut = _currentColorblindType switch {
+            ColorblindType.None => _identity,
+            ColorblindType.Deuteranopia => _deuteranopia,
+            ColorblindType.Protanopia => _protanopia,
+            ColorblindType.Tritanopia => _tritanopia,
             _ => _identity
         };
 
         return lut.Sample(color);
     }
 
-    public static void OnColorblindConfigChanged(object sender, EventArgs args) {
-        ConfigEntry<LutType> configEntry = (ConfigEntry<LutType>)sender;
-        CurrentLut = configEntry.Value;
+    
+    public static void OnColorblindLutTypeChanged(object sender, EventArgs args) {
+        ConfigEntry<ColorblindType> configEntry = (ConfigEntry<ColorblindType>)sender;
+        CurrentColorblindType = configEntry.Value;
     }
 
 }
