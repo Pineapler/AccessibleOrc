@@ -37,6 +37,7 @@
    
     
     <ItemGroup>
+      <Folder Include="Palettes\" />
       <Folder Include="RuntimeDeps\Luts\" />
     </ItemGroup>
 </Project>
