@@ -1,4 +1,5 @@
 ﻿using System;
+using Pineapler.Utils;
 using UnityEngine;
 
 namespace AccessibleOrc.Scripts;
@@ -35,18 +36,18 @@ public class CpuTexture3D {
         v *= width;
         w *= width;
 
-        int u_floor = Math.Max(Mathf.FloorToInt(u), 0);
-        int v_floor = Math.Max(Mathf.FloorToInt(v), 0);
-        int w_floor = Math.Max(Mathf.FloorToInt(w), 0);
+        int u_floor = Math.Clamp(Mathf.FloorToInt(u), 0, width - 1);
+        int v_floor = Math.Clamp(Mathf.FloorToInt(v), 0, width - 1);
+        int w_floor = Math.Clamp(Mathf.FloorToInt(w), 0, width - 1);
 
         int idx_floor = FlattenIndex(u_floor, v_floor, w_floor);
         
-        int u_ceil = Math.Min(Mathf.CeilToInt(u), width - 1);
-        int v_ceil = Math.Min(Mathf.CeilToInt(v), width - 1);
-        int w_ceil = Math.Min(Mathf.CeilToInt(w), width - 1);
+        int u_ceil = Math.Clamp(Mathf.CeilToInt(u), 0, width - 1);
+        int v_ceil = Math.Clamp(Mathf.CeilToInt(v), 0, width - 1);
+        int w_ceil = Math.Clamp(Mathf.CeilToInt(w), 0, width - 1);
 
         int idx_ceil = FlattenIndex(u_ceil, v_ceil, w_ceil);
-
+        
         float u_t = u % 1;
         float v_t = v % 1;
         float w_t = w % 1;

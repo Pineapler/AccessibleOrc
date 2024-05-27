@@ -25,8 +25,8 @@ public class Plugin : BaseUnityPlugin {
         
         if (!Luts.Loaded) {
             Luts.LoadTextures();
-            Luts.CurrentColorblindType = Config.ColorblindType.Value;
-            Config.ColorblindType.SettingChanged += Luts.OnColorblindLutTypeChanged;
+            Luts.CurrentColorblindType = Config.ColorblindProfile.Value;
+            Config.ColorblindProfile.SettingChanged += Luts.OnColorblindLutTypeChanged;
         }
 
         Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
