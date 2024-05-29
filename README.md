@@ -4,6 +4,8 @@ Accessibility features for Orc Massage
 
 ## Color vision deficiency
 
+![In game screenshot](Media/In_Game.png "In-game screenshot")
+
 Replace the color of some UI elements with a color palette that is more
 distinguishable for people with colorblindness.
 
