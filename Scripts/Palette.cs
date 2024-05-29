@@ -21,15 +21,19 @@ public static class Palette {
     
     public static void Load() {
         string current = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!;
+        string customPath = Path.Combine(current, "Palettes", "Custom.png");
         string palettePath = Path.Combine(current, "Palettes", "Palette.png");
+
+        string path = File.Exists(customPath) ? customPath : palettePath;
+
         
         Texture2D srcTex = new Texture2D(6, 1);
-        srcTex.LoadImage(File.ReadAllBytes(palettePath));
+        
+        srcTex.LoadImage(File.ReadAllBytes(path));
 
         if (srcTex.width != 6 || srcTex.height != 1) {
             Log.Error("Palette texture has invalid dimensions. Please make sure it's 6x1 pixels.");
         }
-
         
         // Unmarshall our palette format
         Color[] tempColors = srcTex.GetPixels();
