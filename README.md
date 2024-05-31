@@ -16,10 +16,10 @@ We consulted two people with color vision deficiency. The modded color palette i
 | ---------------- | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ----------------------------------------- |
 | Symbol           | ⬤                                    | ⬤                                    | ⬤                                    | ⬤                                    | **♥**                                | **✗**                                  |
 
-
-| Original | ![Media/Default_Large](Media/Default_Large) |
+| | |
 | --- | --- |
-| Modded | ![Modded_Large](Media/Palette_Large) |
+| Original | ![Media/Default_Large](Media/Default_Large.png) |
+| Modded | ![Modded_Large](Media/Palette_Large.png) |
 
 
 ### Custom palettes
