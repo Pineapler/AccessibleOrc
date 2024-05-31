@@ -6,26 +6,29 @@ Accessibility features for Orc Massage
 
 ![In game screenshot](Media/In_Game.png "In-game screenshot")
 
-Replace the color of some UI elements with a color palette that is more
-distinguishable for people with colorblindness.
+Replaces the color of some UI elements with a color palette that is more distinguishable for people with colorblindness.
 
-The default colors compared to the modded colors can be seen below.
+We consulted two people with color vision deficiency. The modded color palette is optimized for Protanopia and should also work for Deuteranopia and Tritanopia. 
 
-![Default game colors](Media/Default_Large.png "Default game colors")
+### Palette 
 
-![Modded game colors](Media/Palette_Large.png "Modded game colors")
+| Type             | Bad                                  | Level 1                              | Level 2                              | Level 3                              | Good                                 | too much                                  |
+| ---------------- | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ----------------------------------------- |
+| Symbol           | ⬤                                    | ⬤                                    | ⬤                                    | ⬤                                    | **♥**                                | **✗**                                  |
 
-### Using a custom color palette
+
+| Original | ![Media/Default_Large](Media/Default_Large) |
+| --- | --- |
+| Modded | ![Modded_Large](Media/Palette_Large) |
+
+
+### Custom palettes
 
 If the modded color palette is not suitable to you, you may wish to use your own palette.
-This can be accomplished by creating a 6x1 pixel image using an image editor of your choice (e.g. Aseprite, Photoshop, MS paint).
 
-The colors are in order, left to right, the progress of a massage. The leftmost color represents a spot that requires the most massaging,
-the second-to-rightmost represents the "good!" massage spot, and the rightmost color is when a spot is bruised, or over-massaged.
+You use your own palette by creating a new image named `Custom.png` file in the `Orc Massage\BepInEx\plugins\AccessibleOrc\Palettes` folder.
 
-![Custom palette instructions](Media/Palette_Instructions.png "Custom palette instructions")
-
-1. Create a 6x1 pixel image
+1. Create a 6x1 pixel image using an image editor of your choice (e.g. Aseprite, Photoshop, MS paint)
 2. Use the pencil tool to choose your colors
-3. Save the image to "`<game_directory>/BepInEx/Plugins/AccessibleOrc/Palettes/Custom.png`"
+3. Save the image to `Orc Massage\BepInEx\Plugins\AccessibleOrc\Palettes\Custom.png`
 
